@@ -28,10 +28,10 @@ function checkIfPlayerHasWon(player) {
       // Checking horizontally
       if (
         col <= numCols - 4 &&
-        board[row][col] === player &&
-        board[row][col + 1] === player &&
-        board[row][col + 2] === player &&
-        board[row][col + 3] === player
+        board[row][col] == player &&
+        board[row][col + 1] == player &&
+        board[row][col + 2] == player &&
+        board[row][col + 3] == player
       ) {
         return true;
       }
@@ -39,10 +39,10 @@ function checkIfPlayerHasWon(player) {
       // Checking vertically
       if (
         row <= numRows - 4 &&
-        board[row][col] === player &&
-        board[row + 1][col] === player &&
-        board[row + 2][col] === player &&
-        board[row + 3][col] === player
+        board[row][col] == player &&
+        board[row + 1][col] == player &&
+        board[row + 2][col] == player &&
+        board[row + 3][col] == player
       ) {
         return true;
       }
@@ -51,10 +51,10 @@ function checkIfPlayerHasWon(player) {
       if (
         col <= numCols - 4 &&
         row <= numRows - 4 &&
-        board[row][col] === player &&
-        board[row + 1][col + 1] === player &&
-        board[row + 2][col + 2] === player &&
-        board[row + 3][col + 3] === player
+        board[row][col] == player &&
+        board[row + 1][col + 1] == player &&
+        board[row + 2][col + 2] == player &&
+        board[row + 3][col + 3] == player
       ) {
         return true;
       }
@@ -64,9 +64,9 @@ function checkIfPlayerHasWon(player) {
         col >= 3 &&
         row <= numRows - 4 &&
         board[row][col] === player &&
-        board[row + 1][col - 1] === player &&
-        board[row + 2][col - 2] === player &&
-        board[row + 3][col - 3] === player
+        board[row + 1][col - 1] == player &&
+        board[row + 2][col - 2] == player &&
+        board[row + 3][col - 3] == player
       ) {
         return true;
       }
