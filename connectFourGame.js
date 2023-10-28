@@ -1,7 +1,7 @@
 const readline = require("readline");
 
 const board = []; // building a 6 x 7 board (same dimension as the board shown via the link shared)
-const numRows = 6; 
+const numRows = 6;
 const numCols = 7;
 const player1 = "X";
 const player2 = "O";
@@ -23,56 +23,50 @@ function printBoard() {
 }
 
 function checkIfPlayerHasWon(player) {
-  // Checking horizontally
   for (let row = 0; row < numRows; row++) {
-    for (let col = 0; col <= numCols - 4; col++) {
-      if (
-        board[row][col] == player &&
-        board[row][col + 1] == player &&
-        board[row][col + 2] == player &&
-        board[row][col + 3] == player
-      ) {
-        return true;
-      }
-    }
-  }
-
-  // Checking vertically
-  for (let row = 0; row <= numRows - 4; row++) {
     for (let col = 0; col < numCols; col++) {
+      // Checking horizontally
       if (
-        board[row][col] == player &&
-        board[row + 1][col] == player &&
-        board[row + 2][col] == player &&
-        board[row + 3][col] == player
+        col <= numCols - 4 &&
+        board[row][col] === player &&
+        board[row][col + 1] === player &&
+        board[row][col + 2] === player &&
+        board[row][col + 3] === player
       ) {
         return true;
       }
-    }
-  }
 
-  // Checking diagnolly to the right
-  for (let row = 0; row <= numRows - 4; row++) {
-    for (let col = 0; col <= numCols - 4; col++) {
+      // Checking vertically
       if (
-        board[row][col] == player &&
-        board[row + 1][col + 1] == player &&
-        board[row + 2][col + 2] == player &&
-        board[row + 3][col + 3] == player
+        row <= numRows - 4 &&
+        board[row][col] === player &&
+        board[row + 1][col] === player &&
+        board[row + 2][col] === player &&
+        board[row + 3][col] === player
       ) {
         return true;
       }
-    }
-  }
 
-  // Checking diagnolly to the left
-  for (let row = 0; row <= numRows - 4; row++) {
-    for (let col = 3; col < numCols; col++) {
+      // Checking diagonally to the right
       if (
-        board[row][col] == player &&
-        board[row + 1][col - 1] == player &&
-        board[row + 2][col - 2] == player &&
-        board[row + 3][col - 3] == player
+        col <= numCols - 4 &&
+        row <= numRows - 4 &&
+        board[row][col] === player &&
+        board[row + 1][col + 1] === player &&
+        board[row + 2][col + 2] === player &&
+        board[row + 3][col + 3] === player
+      ) {
+        return true;
+      }
+
+      // Checking diagonally to the left
+      if (
+        col >= 3 &&
+        row <= numRows - 4 &&
+        board[row][col] === player &&
+        board[row + 1][col - 1] === player &&
+        board[row + 2][col - 2] === player &&
+        board[row + 3][col - 3] === player
       ) {
         return true;
       }
