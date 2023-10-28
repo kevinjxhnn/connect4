@@ -6,7 +6,7 @@ const numCols = 7;
 const player1 = "X";
 const player2 = "O";
 
-// creating the board
+// Creating the board
 function createBoard() {
   for (let i = 0; i < numRows; i++) {
     const rowArray = Array(numCols).fill(" ");
@@ -23,7 +23,7 @@ function printBoard() {
 }
 
 function checkIfPlayerHasWon(player) {
-  // checking horizontally
+  // Checking horizontally
   for (let row = 0; row < numRows; row++) {
     for (let col = 0; col <= numCols - 4; col++) {
       if (
@@ -37,7 +37,7 @@ function checkIfPlayerHasWon(player) {
     }
   }
 
-  // checking vertically
+  // Checking vertically
   for (let row = 0; row <= numRows - 4; row++) {
     for (let col = 0; col < numCols; col++) {
       if (
@@ -51,7 +51,7 @@ function checkIfPlayerHasWon(player) {
     }
   }
 
-  // checking diagnolly to the right
+  // Checking diagnolly to the right
   for (let row = 0; row <= numRows - 4; row++) {
     for (let col = 0; col <= numCols - 4; col++) {
       if (
@@ -65,7 +65,7 @@ function checkIfPlayerHasWon(player) {
     }
   }
 
-  // checking diagnolly to the left
+  // Checking diagnolly to the left
   for (let row = 0; row <= numRows - 4; row++) {
     for (let col = 3; col < numCols; col++) {
       if (
@@ -82,7 +82,7 @@ function checkIfPlayerHasWon(player) {
   return false;
 }
 
-// adding the player's move to the board
+// Adding the player's move to the board
 function addPlayerPiece(player, col) {
   for (let row = numRows - 1; row >= 0; row--) {
     if (board[row][col] == " ") {
@@ -92,7 +92,7 @@ function addPlayerPiece(player, col) {
   }
 }
 
-// to read the players input
+// To read the players input
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout,
@@ -102,6 +102,7 @@ let currentPlayer = player1;
 
 createBoard();
 
+// Main function to run the game
 function runGame() {
   printBoard();
   rl.question(
@@ -118,6 +119,7 @@ function runGame() {
           console.log(`Player "${currentPlayer}" has won!`);
           rl.close();
         } else if (
+          // Checking if every cell if filled. If yes, then it is a tie.
           board.every((row) => {
             return row.every((cell) => {
               return cell != " ";
