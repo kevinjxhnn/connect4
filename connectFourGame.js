@@ -18,7 +18,8 @@ function printBoard() {
   for (let i = 0; i < numRows; i++) {
     console.log(board[i].join(" | "));
   }
-  console.log("-".repeat(28));
+  const numDashes = 4 * numCols - 1;
+  console.log("-".repeat(numDashes));
   console.log(" 1  2   3   4   5   6   7     <--- COLUMN NUMBERS");
 }
 
@@ -86,6 +87,15 @@ function addPlayerPiece(player, col) {
   }
 }
 
+// Checking if every cell if filled. If yes, then it is a tie.
+function isBoardFull(board) {
+  return board.every((row) => {
+    return row.every((cell) => {
+      return cell != " ";
+    });
+  });
+}
+
 // To read the players input
 const rl = readline.createInterface({
   input: process.stdin,
@@ -112,17 +122,9 @@ function runGame() {
 
           console.log(`Player "${currentPlayer}" has won!`);
           rl.close();
-        } else if (
-          // Checking if every cell if filled. If yes, then it is a tie.
-          board.every((row) => {
-            return row.every((cell) => {
-              return cell != " ";
-            });
-          })
-        ) {
+        } else if (isBoardFull(board)) {
           printBoard();
           console.log("It is a tie!");
-
           rl.close();
         } else {
           currentPlayer = currentPlayer == player1 ? player2 : player1;

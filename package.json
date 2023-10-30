@@ -1,0 +1,27 @@
+{
+  "name": "connect4",
+  "version": "1.0.0",
+  "description": "This is a console-based implementation of the classic game Connect Four. To play the game, you'll need to run the `connectFourGame.js` script.",
+  "main": "connectFourGame.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "play": "node connectFourGame.js",
+    "configure-husky": "npx husky install && npx husky add .husky/pre-commit \"npx --no-install lint-staged\""
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,json}": ["eslint . --fix"]
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^8.52.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.0.2"
+  }
+}
